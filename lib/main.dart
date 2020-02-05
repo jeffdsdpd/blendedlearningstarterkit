@@ -1,18 +1,18 @@
+import 'package:blendedlearningstarterkit/auth.dart';
 import 'package:flutter/material.dart';
-import 'login_page.dart';
+import 'auth.dart';
+import 'root_page.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of the application. 
+class MyApp extends StatelessWidget { 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Blended Learning Starter Kit',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
+      theme: new ThemeData(primaryColor: Color(0xFF95D03A),
       ),
-      home: new LoginPage()
+      home: new RootPage(auth: new Auth())
     );
   }
 }
