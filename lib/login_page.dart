@@ -71,12 +71,10 @@ class _LoginPageState extends State<LoginPage> {
         title: Column(
           children: <Widget>[
             Text('DSDProfessionalDevelopment',
-            style: TextStyle(color: Colors.white, fontSize: 23.0),
+            style: TextStyle(color: Colors.white, fontSize: 25.0),
           ),
-          Padding(
-            padding: EdgeInsets.all(2.0)),
-              Text('Blended Learning Starter Kit',
-              style: TextStyle(color: Colors.white, fontSize: 21.0),
+              Text('Blended Learning Resources',
+              style: TextStyle(color: Colors.white, fontSize: 23.0,),
           )
         ],
         ),

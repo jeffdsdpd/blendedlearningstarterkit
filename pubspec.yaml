@@ -8,8 +8,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_auth: 0.9.0
   cupertino_icons: ^0.1.2
+  cloud_firestore: ^0.12.9
+  firebase_auth: ^0.14.0+2
+  firebase_core: ^0.4.0+8
+  firebase_storage: ^3.0.8
 
 dev_dependencies:
   flutter_test:
@@ -19,3 +22,9 @@ flutter:
   uses-material-design: true
   assets:     
     - assets/images/
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway-Regular.ttf
+        - asset: assets/fonts/Raleway-Thin.ttf
+          style: normal

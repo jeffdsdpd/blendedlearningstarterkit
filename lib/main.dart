@@ -8,12 +8,11 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget { 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Blended Learning Starter Kit',
-      theme: new ThemeData(primaryColor: Color(0xFF95D03A),
+      theme: ThemeData(primaryColor: Color(0xFF95D03A),
       ),
-      home: new RootPage(auth: new Auth())
+      home: RootPage(auth: Auth())
     );
   }
 }
-     
