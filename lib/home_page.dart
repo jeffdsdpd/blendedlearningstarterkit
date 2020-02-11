@@ -1,5 +1,3 @@
-
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'detail_page.dart';
 import 'lesson.dart';
@@ -31,15 +29,6 @@ void _signOut() async {
   } catch (e) {
     print(e);
   }
-}
-
-Future<void> _getData(String title) async {
-  print('about to get file - '+title);
-  var data = await FirebaseStorage.instance.ref().child(title).getData(10 * 1024 * 1024);
-   print('return from getting file - '+title);
-  var text = new String.fromCharCodes(data);
-  print(data);
-  print(text);
 }
 
 @override

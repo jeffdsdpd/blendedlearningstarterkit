@@ -1,12 +1,28 @@
 import 'package:blendedlearningstarterkit/lesson.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:blendedlearningstarterkit/mobile_pdf.dart';
 
 class DetailPage extends StatelessWidget {
   final Lesson lesson;
   DetailPage({Key key, this.lesson}) : super(key: key);
+  
+
+  Future<void> _getData(BuildContext context, String title) async {
+    print('about to get file - '+title);
+    var data = await FirebaseStorage.instance.ref().child(title).getData(10 * 1024 * 1024);
+    var downloadURL = await FirebaseStorage.instance.ref().child(title).getDownloadURL();
+    print('return from getting file - ' + title);
+    print('download url - ' + downloadURL);
+
+    LaunchFile.loadFromFirebase(data.toString(), downloadURL);
+    LaunchFile.launchPDF(context, title, downloadURL, 'url');
+}
+
+
   @override
   Widget build(BuildContext context) {
-
+  
     final coursePrice = Container(
       padding: const EdgeInsets.all(7.0),
       decoration: new BoxDecoration(
@@ -54,16 +70,7 @@ class DetailPage extends StatelessWidget {
     );
 
     final topContent = Stack(
-      children: <Widget>[
-        Container(
-            padding: EdgeInsets.only(left: 10.0),
-            height: MediaQuery.of(context).size.height * 0.5,
-            decoration: new BoxDecoration(
-              image: new DecorationImage(
-                image: new AssetImage("drive-steering-wheel.jpg"),
-                fit: BoxFit.cover,
-              ),
-            )),
+      children: <Widget> [
         Container(
           height: MediaQuery.of(context).size.height * 0.5,
           padding: EdgeInsets.all(40.0),
@@ -94,7 +101,7 @@ class DetailPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 16.0),
         width: MediaQuery.of(context).size.width,
         child: RaisedButton(
-          onPressed: () => {},
+          onPressed: () => _getData(context, lesson.fileIndicatorValue),
           color: Color.fromRGBO(58, 66, 86, 1.0),
           child:
               Text("VIEW THIS DOCUMENT", style: TextStyle(color: Colors.white)),
