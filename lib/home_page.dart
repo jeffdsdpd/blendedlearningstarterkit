@@ -142,18 +142,18 @@ List getLessons() {
             "This set of 8 activites (including directions, lessons, level up, etc...) and 10 cafe questions can be used in many ELA Novel Study Activities."),
 
     Lesson(
-        title: "Phase 1 Checklist\n (Coming Soon!)",
+        title: "Phase1 Checklist\n(Coming Soon!)",
         price: 0,
         content:
             "Coming Very Soon!"),
     Lesson(
-        title: "Phase 2 Checklist\n (Coming Soon!)",
+        title: "Phase2 Checklist\n(Coming Soon!)",
         price: 0,
         content:
             "Coming Very Soon!"),
 
     Lesson(
-        title: "Phase 3 Checklist\n (Coming Soon!)",
+        title: "Phase3 Checklist\n(Coming Soon!)",
         price: 0,
         content:
             "Coming Very Soon!"),

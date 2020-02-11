@@ -24,7 +24,7 @@ class DetailPage extends StatelessWidget {
       children: <Widget>[
         SizedBox(height: 120.0),
         Icon(
-          Icons.directions_car,
+          Icons.content_copy,
           color: Colors.white,
           size: 40.0,
         ),
@@ -97,7 +97,7 @@ class DetailPage extends StatelessWidget {
           onPressed: () => {},
           color: Color.fromRGBO(58, 66, 86, 1.0),
           child:
-              Text("TAKE THIS LESSON", style: TextStyle(color: Colors.white)),
+              Text("VIEW THIS DOCUMENT", style: TextStyle(color: Colors.white)),
         ));
     final bottomContent = Container(
       // height: MediaQuery.of(context).size.height,

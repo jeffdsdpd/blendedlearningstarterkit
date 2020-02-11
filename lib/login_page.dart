@@ -87,8 +87,21 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: buildInputs() + buildSubmitButtons(), //call the methods below to paint the inputs and buttons accordingly
           ),
-      )
+      ),
+
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            alignment: Alignment(0.1, 0.3),
+            image: AssetImage(
+                'assets/images/dsdpdlogo.png'),
+            fit: BoxFit.scaleDown,
+          ),
+          shape: BoxShape.circle,
+        ),
+      
     )
+
+
     );
   }
 
