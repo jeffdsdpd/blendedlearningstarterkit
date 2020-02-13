@@ -1,26 +1,24 @@
-import 'package:blendedlearningstarterkit/doc_category/category.dart';
-import 'package:blendedlearningstarterkit/doc_category/future_ready.dart';
-import 'package:blendedlearningstarterkit/doc_category/phase1_checklist.dart';
-import 'package:blendedlearningstarterkit/doc_category/phase2_checklist.dart';
+import 'package:blendedlearningstarterkit/auth.dart';
 import 'package:flutter/material.dart';
-import 'auth.dart';
+import 'package:blendedlearningstarterkit/detail_page.dart';
+import 'package:blendedlearningstarterkit/lesson.dart';
 
-class HomePage extends StatefulWidget {
-HomePage({this.auth, this.onSignedOut});
+class FutureReadyPage extends StatefulWidget {
+FutureReadyPage({this.auth, this.onSignedOut});
 
 final BaseAuth auth;
 final VoidCallback onSignedOut;
 
 @override
-  _HomePageState createState() => _HomePageState();
+  _FutureReadyPageState createState() => _FutureReadyPageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  List categories;
+class _FutureReadyPageState extends State<FutureReadyPage> {
+  List lessons;
 
   @override
   void initState() {
-    categories = getCategories();
+    lessons = getLessons();
     super.initState();
   }
 
@@ -35,10 +33,9 @@ void _signOut() async {
 
 @override
   Widget build(BuildContext context) {
-    ListTile makeListTile(Category category) => ListTile(
+    ListTile makeListTile(Lesson lesson) => ListTile(
           contentPadding:
-              EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-          //creates leading icon for each tile
+              EdgeInsets.symmetric(horizontal: 20.0, vertical: 11.0),
           leading: Container(
             padding: EdgeInsets.only(right: 12.0),
             decoration: new BoxDecoration(
@@ -46,22 +43,11 @@ void _signOut() async {
                     right: new BorderSide(width: 1.0, color: Colors.white24)
                   )
               ),
-            child: Icon(Icons.collections, color: Colors.white),
+            child: Icon(Icons.picture_as_pdf, color: Colors.white),
           ),
-          //creates trailing icon for each tile
-          trailing: Container(
-            padding: EdgeInsets.only(right: 12.0),
-            decoration: new BoxDecoration(
-                border: new Border(
-                    right: new BorderSide(width: 1.0, color: Colors.white24)
-                  )
-              ),
-            child: Icon(Icons.keyboard_arrow_right, color: Colors.white),
-          ),
-          //uses the lesson widget to create text on the tiles
           title: Text(
-            category.title,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0),
+            lesson.title,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.0),
           ),
           subtitle: Row(
             children: <Widget>[
@@ -76,16 +62,16 @@ void _signOut() async {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => category.pagename));
+                    builder: (context) => DetailPage(lesson: lesson)));
           },
         );
 
-    Card makeCard(Category category) => Card(
+    Card makeCard(Lesson lesson) => Card(
           elevation: 8.0,
           margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
           child: Container(
             decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
-            child: makeListTile(category),
+            child: makeListTile(lesson),
           ),
         );
 
@@ -95,9 +81,9 @@ void _signOut() async {
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
-        itemCount: categories.length,
+        itemCount: lessons.length,
         itemBuilder: (BuildContext context, int index) {
-          return makeCard(categories[index]);
+          return makeCard(lessons[index]);
         },
       ),
     );
@@ -134,18 +120,30 @@ void _signOut() async {
   }
 }
 
-List getCategories() {
+List getLessons() {
   return [
-     Category(
-        title: "Future Ready Activities",
-        pagename: FutureReadyPage()),
+     Lesson(
+        title: "ELA Future Ready Task Cards",
+        fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/ela_future_ready_task_cards_.pdf",
+        price: 0,
+        content: "This set of 8 activites (including directions, lessons, level up, etc...) and 10 cafe questions can be used in many ELA Novel Study Activities."),
 
-    Category(
-        title: "Phase 1 Checklists",
-        pagename: Phase1Page()),
+    Lesson(
+        title: "Pipe Cleaner Activity Cards",
+        fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/stem_pipe_cleaner_activities.pdf",
+        price: 0,
+        content: "This set of 20 STEM PIPE Cleaner activity cards that can be used in many Future Ready Studio Activites."),
 
-    Category(
-        title: "Phase 2 Checklists",
-        pagename: Phase2Page()),
+    Lesson(
+    title: "Ozobot Color Codes Explained",
+    fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/OzobotCodes.pdf",
+    price: 0,
+    content: "This document will help you understand what the different color codes will make the ozobots do."),
+
+    Lesson(
+    title: "Ozobot Fraction Activities",
+    fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/OzobotFractions.pdf",
+    price: 0,
+    content: "This lesson will divide squares to create new tracks for Ozobot to travel on! To start, the class will shade gridded squares to explore various fractions, dividing a square to make a track for Ozobot."),
   ];
 }

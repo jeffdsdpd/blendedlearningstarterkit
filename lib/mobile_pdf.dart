@@ -1,18 +1,27 @@
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:blendedlearningstarterkit/pdf_screen.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 class LaunchFile {
-  static void launchPDF(BuildContext context, String title, String pdfPath, String pdfUrl) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => PDFScreen(title, pdfPath, pdfUrl),
-      ),
-    );
-  }
-
-  static Future<dynamic> loadFromFirebase(String image, String url) async {
-    return await FirebaseStorage.instance.ref().child(image).getDownloadURL();
+  Future<void> launchPDF(BuildContext context, String title, Uint8List data) async {
+      prepareTestPdf(context, title, data).then((path) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PDFScreen(title, path)
+            ),
+          );
+        });
+      }
+      
+  Future<String> prepareTestPdf(context, title, data) async {
+    final filename = title+'.pdf';
+    var dir = (await getApplicationDocumentsDirectory()).path;
+    print(dir);
+    File file = File('$dir/$filename');
+    file.writeAsBytesSync(data);
+    return ('$dir/$filename');
   }
 }

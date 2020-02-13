@@ -1,26 +1,24 @@
-import 'package:blendedlearningstarterkit/doc_category/category.dart';
-import 'package:blendedlearningstarterkit/doc_category/future_ready.dart';
-import 'package:blendedlearningstarterkit/doc_category/phase1_checklist.dart';
-import 'package:blendedlearningstarterkit/doc_category/phase2_checklist.dart';
+import 'package:blendedlearningstarterkit/auth.dart';
 import 'package:flutter/material.dart';
-import 'auth.dart';
+import 'package:blendedlearningstarterkit/detail_page.dart';
+import 'package:blendedlearningstarterkit/lesson.dart';
 
-class HomePage extends StatefulWidget {
-HomePage({this.auth, this.onSignedOut});
+class Phase1Page extends StatefulWidget {
+Phase1Page({this.auth, this.onSignedOut});
 
 final BaseAuth auth;
 final VoidCallback onSignedOut;
 
 @override
-  _HomePageState createState() => _HomePageState();
+  _Phase1PageState createState() => _Phase1PageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  List categories;
+class _Phase1PageState extends State<Phase1Page> {
+  List lessons;
 
   @override
   void initState() {
-    categories = getCategories();
+    lessons = getLessons();
     super.initState();
   }
 
@@ -35,10 +33,9 @@ void _signOut() async {
 
 @override
   Widget build(BuildContext context) {
-    ListTile makeListTile(Category category) => ListTile(
+    ListTile makeListTile(Lesson lesson) => ListTile(
           contentPadding:
-              EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-          //creates leading icon for each tile
+              EdgeInsets.symmetric(horizontal: 20.0, vertical: 11.0),
           leading: Container(
             padding: EdgeInsets.only(right: 12.0),
             decoration: new BoxDecoration(
@@ -46,21 +43,10 @@ void _signOut() async {
                     right: new BorderSide(width: 1.0, color: Colors.white24)
                   )
               ),
-            child: Icon(Icons.collections, color: Colors.white),
+            child: Icon(Icons.picture_as_pdf, color: Colors.white),
           ),
-          //creates trailing icon for each tile
-          trailing: Container(
-            padding: EdgeInsets.only(right: 12.0),
-            decoration: new BoxDecoration(
-                border: new Border(
-                    right: new BorderSide(width: 1.0, color: Colors.white24)
-                  )
-              ),
-            child: Icon(Icons.keyboard_arrow_right, color: Colors.white),
-          ),
-          //uses the lesson widget to create text on the tiles
           title: Text(
-            category.title,
+            lesson.title,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0),
           ),
           subtitle: Row(
@@ -76,16 +62,16 @@ void _signOut() async {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => category.pagename));
+                    builder: (context) => DetailPage(lesson: lesson)));
           },
         );
 
-    Card makeCard(Category category) => Card(
+    Card makeCard(Lesson lesson) => Card(
           elevation: 8.0,
           margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
           child: Container(
             decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
-            child: makeListTile(category),
+            child: makeListTile(lesson),
           ),
         );
 
@@ -95,9 +81,9 @@ void _signOut() async {
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
-        itemCount: categories.length,
+        itemCount: lessons.length,
         itemBuilder: (BuildContext context, int index) {
-          return makeCard(categories[index]);
+          return makeCard(lessons[index]);
         },
       ),
     );
@@ -134,18 +120,24 @@ void _signOut() async {
   }
 }
 
-List getCategories() {
+List getLessons() {
   return [
-     Category(
-        title: "Future Ready Activities",
-        pagename: FutureReadyPage()),
+    Lesson(
+        title: "Phase1 Checklist",
+        fileIndicatorValue: "BlendedLearningDocuments/Phase1Checklist/Phase1ChecklistV1.pdf",
+        price: 0,
+        content: "This is one version of a Phase 1 Checklist which can be used to transform a classroom into a Phase 1 Blended Learning Classroom"),
 
-    Category(
-        title: "Phase 1 Checklists",
-        pagename: Phase1Page()),
+    Lesson(
+        title: "Phase1 Checklist",
+        fileIndicatorValue: "BlendedLearningDocuments/Phase1Checklist/Phase1ChecklistV2.pdf",
+        price: 0,
+        content: "This is another version of a Phase 1 Checklist which can be used to transform a classroom into a Phase 1 Blended Learning Classroom"),
 
-    Category(
-        title: "Phase 2 Checklists",
-        pagename: Phase2Page()),
+    Lesson(
+        title: "Phase1 Checklist",
+        fileIndicatorValue: "BlendedLearningDocuments/Phase1Checklist/Phase1ChecklistV3.pdf",
+        price: 0,
+        content: "This is another version of a Phase 1 Checklist which can be used to transform a classroom into a Phase 1 Blended Learning Classroom"),
   ];
 }

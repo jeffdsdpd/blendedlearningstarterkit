@@ -74,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
             style: TextStyle(color: Colors.white, fontSize: 25.0),
           ),
               Text('Blended Learning Resources',
-              style: TextStyle(color: Colors.white, fontSize: 23.0,),
+              style: TextStyle(color: Colors.white, fontSize: 20.0,),
           )
         ],
         ),
@@ -92,6 +92,7 @@ class _LoginPageState extends State<LoginPage> {
         decoration: BoxDecoration(
           image: DecorationImage(
             alignment: Alignment(0.1, 0.3),
+            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.dstATop),
             image: AssetImage(
                 'assets/images/dsdpdlogo.png'),
             fit: BoxFit.scaleDown,
