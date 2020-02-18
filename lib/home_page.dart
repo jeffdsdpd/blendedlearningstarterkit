@@ -5,6 +5,8 @@ import 'package:koukicons/archive.dart';
 import 'package:koukicons/approval.dart';
 import 'package:koukicons/shop.dart';
 
+import 'doc_category/future_ready.dart';
+
 
 class HomePage extends StatefulWidget {
 HomePage({this.auth, this.onSignedOut});
@@ -34,12 +36,47 @@ final List<String> litems = [
     "Store",
   ];
 
-  final List licons = [
-    KoukiconsFiles(width: 75.0),
-    KoukiconsArchive(width: 75.0),
-    KoukiconsApproval(width: 75.0),
-    KoukiconsShop(width: 95.0)
-  ];
+final List licons = [
+  KoukiconsFiles(width: 75.0),
+  KoukiconsArchive(width: 75.0),
+  KoukiconsApproval(width: 75.0),
+  KoukiconsShop(width: 95.0)
+];
+
+void _onButtonPressed(int index) {
+  switch(index) { 
+      case 0: { Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => FutureReadyPage()));
+                    }
+      break; 
+     
+      case 1: { Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => FutureReadyPage()));
+                    }
+      break; 
+     
+      case 2: { Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => FutureReadyPage()));
+                    }
+      break; 
+     
+      case 3: { Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => FutureReadyPage()));
+                    }
+      break; 
+     
+      default: { print("Invalid choice"); } 
+      break; 
+   } 
+}
 
 @override
  Widget build(BuildContext context) {
@@ -103,10 +140,15 @@ final List<String> litems = [
                  child: Center(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      licons[index], Text(litems[index],
-                      style: TextStyle(fontSize: 25, color: Colors.black),
-                      )
+                    children: <Widget>[IconButton(icon:
+                      licons[index],
+                      iconSize: 85.0,
+                      onPressed: (){_onButtonPressed(index);}
+                      ), 
+                      Padding(padding: EdgeInsets.all(12.0),
+                      ), 
+                      Text(litems[index], style: TextStyle(fontSize: 25, color: Colors.black),
+                      ),
                     ],
                   ),
                 ),
