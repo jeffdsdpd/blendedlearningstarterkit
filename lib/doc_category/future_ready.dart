@@ -112,10 +112,40 @@ void _signOut() async {
       ],
     );
 
+    final makeBottom = Container(
+        height: 55.0,
+        child: BottomAppBar(
+          color: Color.fromRGBO(58, 66, 86, 1.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.home, color: Colors.white),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(Icons.picture_as_pdf, color: Colors.white),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(Icons.videocam, color: Colors.white),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(Icons.video_label, color: Colors.white),
+                onPressed: () {},
+              )
+            ],
+          ),
+        ),
+      );
+
+
     return Scaffold(
       backgroundColor: Color(0xFF95D03A),
       appBar: topAppBar,
       body: makeBody,
+      bottomNavigationBar: makeBottom,
     );
   }
 }
@@ -123,27 +153,27 @@ void _signOut() async {
 List getLessons() {
   return [
      Lesson(
-        title: "ELA Future Ready Task Cards",
-        fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/ela_future_ready_task_cards_.pdf",
-        price: 0,
-        content: "This set of 8 activites (including directions, lessons, level up, etc...) and 10 cafe questions can be used in many ELA Novel Study Activities."),
+      title: "ELA Future Ready Task Cards",
+      fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/ela_future_ready_task_cards_.pdf",
+      price: 0,
+      content: "This set of 8 activites (including directions, lessons, level up, etc...) and 10 cafe questions can be used in many ELA Novel Study Activities."),
 
     Lesson(
-        title: "Pipe Cleaner Activity Cards",
-        fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/stem_pipe_cleaner_activities.pdf",
-        price: 0,
-        content: "This set of 20 STEM PIPE Cleaner activity cards that can be used in many Future Ready Studio Activites."),
+      title: "Pipe Cleaner Activity Cards",
+      fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/stem_pipe_cleaner_activities.pdf",
+      price: 0,
+      content: "This set of 20 STEM PIPE Cleaner activity cards that can be used in many Future Ready Studio Activites."),
 
     Lesson(
-    title: "Ozobot Color Codes Explained",
-    fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/OzobotCodes.pdf",
-    price: 0,
-    content: "This document will help you understand what the different color codes will make the ozobots do."),
+      title: "Ozobot Color Codes Explained",
+      fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/OzobotCodes.pdf",
+      price: 0,
+      content: "This document will help you understand what the different color codes will make the ozobots do."),
 
     Lesson(
-    title: "Ozobot Fraction Activities",
-    fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/OzobotFractions.pdf",
-    price: 0,
-    content: "This lesson will divide squares to create new tracks for Ozobot to travel on! To start, the class will shade gridded squares to explore various fractions, dividing a square to make a track for Ozobot."),
+      title: "Ozobot Fraction Activities",
+      fileIndicatorValue: "BlendedLearningDocuments/FutureReadyActivities/OzobotFractions.pdf",
+      price: 0,
+      content: "This lesson will divide squares to create new tracks for Ozobot to travel on! To start, the class will shade gridded squares to explore various fractions, dividing a square to make a track for Ozobot."),
   ];
 }

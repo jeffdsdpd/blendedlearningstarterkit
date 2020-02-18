@@ -112,10 +112,39 @@ void _signOut() async {
       ],
     );
 
+    final makeBottom = Container(
+        height: 55.0,
+        child: BottomAppBar(
+          color: Color.fromRGBO(58, 66, 86, 1.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.home, color: Colors.white),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(Icons.picture_as_pdf, color: Colors.white),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(Icons.videocam, color: Colors.white),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(Icons.video_label, color: Colors.white),
+                onPressed: () {},
+              )
+            ],
+          ),
+        ),
+      );
+
     return Scaffold(
       backgroundColor: Color(0xFF95D03A),
       appBar: topAppBar,
       body: makeBody,
+      bottomNavigationBar: makeBottom,
     );
   }
 }

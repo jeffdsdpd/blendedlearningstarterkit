@@ -1,9 +1,10 @@
-import 'package:blendedlearningstarterkit/doc_category/category.dart';
-import 'package:blendedlearningstarterkit/doc_category/future_ready.dart';
-import 'package:blendedlearningstarterkit/doc_category/phase1_checklist.dart';
-import 'package:blendedlearningstarterkit/doc_category/phase2_checklist.dart';
 import 'package:flutter/material.dart';
 import 'auth.dart';
+import 'package:koukicons/files.dart';
+import 'package:koukicons/archive.dart';
+import 'package:koukicons/approval.dart';
+import 'package:koukicons/shop.dart';
+
 
 class HomePage extends StatefulWidget {
 HomePage({this.auth, this.onSignedOut});
@@ -16,13 +17,6 @@ final VoidCallback onSignedOut;
 }
 
 class _HomePageState extends State<HomePage> {
-  List categories;
-
-  @override
-  void initState() {
-    categories = getCategories();
-    super.initState();
-  }
 
 void _signOut() async {
   try {
@@ -33,119 +27,92 @@ void _signOut() async {
   }
 }
 
+final List<String> litems = [
+    "Definitions",
+    "Resources",
+    "Certification",
+    "Store",
+  ];
+
+  final List licons = [
+    KoukiconsFiles(width: 75.0),
+    KoukiconsArchive(width: 75.0),
+    KoukiconsApproval(width: 75.0),
+    KoukiconsShop(width: 95.0)
+  ];
+
 @override
-  Widget build(BuildContext context) {
-    ListTile makeListTile(Category category) => ListTile(
-          contentPadding:
-              EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-          //creates leading icon for each tile
-          leading: Container(
-            padding: EdgeInsets.only(right: 12.0),
-            decoration: new BoxDecoration(
-                border: new Border(
-                    right: new BorderSide(width: 1.0, color: Colors.white24)
-                  )
-              ),
-            child: Icon(Icons.collections, color: Colors.white),
-          ),
-          //creates trailing icon for each tile
-          trailing: Container(
-            padding: EdgeInsets.only(right: 12.0),
-            decoration: new BoxDecoration(
-                border: new Border(
-                    right: new BorderSide(width: 1.0, color: Colors.white24)
-                  )
-              ),
-            child: Icon(Icons.keyboard_arrow_right, color: Colors.white),
-          ),
-          //uses the lesson widget to create text on the tiles
-          title: Text(
-            category.title,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0),
-          ),
-          subtitle: Row(
-            children: <Widget>[
-              Expanded(
-                  flex: 1,
-                  child: Container(
-                  )
-                ),
-            ],
-          ),
-          onTap:() {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => category.pagename));
-          },
-        );
-
-    Card makeCard(Category category) => Card(
-          elevation: 8.0,
-          margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-          child: Container(
-            decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
-            child: makeListTile(category),
-          ),
-        );
-
-
-    final makeBody = Container(
-      color: Color(0xFF95D03A),
-      child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: categories.length,
-        itemBuilder: (BuildContext context, int index) {
-          return makeCard(categories[index]);
-        },
+ Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[dashBg, content],
       ),
     );
-
-
-    final topAppBar = AppBar(
-      backgroundColor: Color(0xFF95D03A),
-      title: RichText(
-            text: TextSpan(children: [
-              TextSpan(
-                text: 'Blended Learning',
-              ),
-              TextSpan(text: "\n"),
-              TextSpan(
-                text: 'Resources',
-              )
-            ],
-            style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 15.0, fontWeight: FontWeight.bold),
-            ),
-          textAlign: TextAlign.center),
-      actions: <Widget>[
-        FlatButton(
-          child: Text('Logout', style: TextStyle(fontSize: 15.0, color: Colors.white)), 
-          onPressed: _signOut
-        )
-      ],
-    );
-
-    return Scaffold(
-      backgroundColor: Color(0xFF95D03A),
-      appBar: topAppBar,
-      body: makeBody,
-    );
   }
-}
 
-List getCategories() {
-  return [
-     Category(
-        title: "Future Ready Activities",
-        pagename: FutureReadyPage()),
+  get dashBg => Column(
+        children: <Widget>[
+          Expanded(
+            child: Container(color: Color(0xFF95D03A)),
+            flex: 2,
+          ),
+          Expanded(
+            child: Container(color: Colors.transparent),
+            flex: 5,
+          ),
+        ],
+      );
 
-    Category(
-        title: "Phase 1 Checklists",
-        pagename: Phase1Page()),
+  get content => Container(
+        child: Column(
+          children: <Widget>[
+            header,
+            grid,
+          ],
+        ),
+      );
 
-    Category(
-        title: "Phase 2 Checklists",
-        pagename: Phase2Page()),
-  ];
+  get header => ListTile(
+    contentPadding: EdgeInsets.only(left: 20, right: 20, top: 80, bottom: 20),
+    title: Column(
+          children: <Widget>[
+            Text('DSDProfessionalDevelopment',
+            style: TextStyle(color: Colors.white, fontSize: 24.0),
+          ),
+              Text('Blended Learning Starterkit',
+              style: TextStyle(color: Colors.white, fontSize: 22.0,),
+          )
+        ],
+        ),
+  );
+
+  get grid => Expanded(
+        child: Container(
+          padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+          child: GridView.count(
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            crossAxisCount: 2,
+            childAspectRatio: .90,
+            children: List.generate(litems.length, (index) {
+              return Card(
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)
+                ),
+                 child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      licons[index], Text(litems[index],
+                      style: TextStyle(fontSize: 25, color: Colors.black),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            }),
+          ),
+        ),
+      );
 }
