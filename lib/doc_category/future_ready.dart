@@ -1,7 +1,7 @@
 import 'package:blendedlearningstarterkit/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:blendedlearningstarterkit/detail_page.dart';
-import 'package:blendedlearningstarterkit/lesson.dart';
+import 'package:blendedlearningstarterkit/models/lesson.dart';
 
 class FutureReadyPage extends StatefulWidget {
 FutureReadyPage({this.auth, this.onSignedOut});

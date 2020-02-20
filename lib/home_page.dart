@@ -1,12 +1,14 @@
+import 'package:blendedlearningstarterkit/doc_category/definition_page.dart';
+import 'package:blendedlearningstarterkit/doc_category/resource_page.dart';
+import 'package:blendedlearningstarterkit/doc_category/store_page.dart';
 import 'package:flutter/material.dart';
+import 'package:koukicons/collaboration.dart';
+import 'package:koukicons/vid3.dart';
+import 'package:koukicons/write.dart';
 import 'auth.dart';
-import 'package:koukicons/files.dart';
 import 'package:koukicons/archive.dart';
 import 'package:koukicons/approval.dart';
 import 'package:koukicons/shop.dart';
-
-import 'doc_category/future_ready.dart';
-
 
 class HomePage extends StatefulWidget {
 HomePage({this.auth, this.onSignedOut});
@@ -30,17 +32,21 @@ void _signOut() async {
 }
 
 final List<String> litems = [
-    "Definitions",
+    "Training Videos",
     "Resources",
     "Certification",
     "Store",
+    "Blog",
+    "Contact Us"
   ];
 
 final List licons = [
-  KoukiconsFiles(width: 75.0),
-  KoukiconsArchive(width: 75.0),
-  KoukiconsApproval(width: 75.0),
-  KoukiconsShop(width: 95.0)
+  KoukiconsVid3(width: 85.0),
+  KoukiconsArchive(width: 85.0),
+  KoukiconsApproval(width: 85.0),
+  KoukiconsShop(width: 95.0),
+  KoukiconsWrite(width: 85.0),
+  KoukiconsCollaboration(width: 85.0)
 ];
 
 void _onButtonPressed(int index) {
@@ -48,28 +54,42 @@ void _onButtonPressed(int index) {
       case 0: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => FutureReadyPage()));
+                    builder: (context) => DefinitionPage()));
                     }
       break; 
      
       case 1: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => FutureReadyPage()));
+                    builder: (context) => ResourcePage()));
                     }
       break; 
      
       case 2: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => FutureReadyPage()));
+                    builder: (context) => WebViewContainer('https://www.dsdcoaching.com/')));
                     }
       break; 
      
       case 3: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => FutureReadyPage()));
+                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/store.html')));
+                    }
+      break;
+
+      case 4: { Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/blended-learning-blog')));
+                    }
+      break;
+
+      case 5: { Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/contact-us.html')));
                     }
       break; 
      
@@ -114,10 +134,10 @@ void _onButtonPressed(int index) {
     title: Column(
           children: <Widget>[
             Text('DSDProfessionalDevelopment',
-            style: TextStyle(color: Colors.white, fontSize: 24.0),
+            style: TextStyle(color: Colors.black, fontSize: 28.0),
           ),
               Text('Blended Learning Starterkit',
-              style: TextStyle(color: Colors.white, fontSize: 22.0,),
+              style: TextStyle(color: Colors.black, fontSize: 24.0,),
           )
         ],
         ),

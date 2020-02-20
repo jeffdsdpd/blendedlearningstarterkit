@@ -17,6 +17,8 @@ dependencies:
   flutter_full_pdf_viewer: ^1.0.6
   path_provider: ^1.5.1
   koukicons: ^2.0.2
+  webview_flutter: ^0.3.0
+  youtube_player_flutter: 6.0.3+2
 
 
 dev_dependencies:

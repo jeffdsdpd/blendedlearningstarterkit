@@ -1,9 +1,9 @@
 import 'package:blendedlearningstarterkit/doc_category/category.dart';
 import 'package:blendedlearningstarterkit/doc_category/future_ready.dart';
 import 'package:blendedlearningstarterkit/doc_category/phase1_checklist.dart';
-import 'package:blendedlearningstarterkit/doc_category/phase2_checklist.dart';
 import 'package:flutter/material.dart';
-import 'auth.dart';
+import '../auth.dart';
+
 
 class ResourcePage extends StatefulWidget {
 ResourcePage({this.auth, this.onSignedOut});
@@ -153,10 +153,6 @@ List getCategories() {
 
     Category(
         title: "Phase 1 Checklists",
-        pagename: Phase1Page()),
-
-    Category(
-        title: "Phase 2 Checklists",
-        pagename: Phase2Page()),
+        pagename: Phase1Page())
   ];
 }
