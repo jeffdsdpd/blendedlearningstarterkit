@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
 
 class PDFScreen extends StatelessWidget {
-  String title = "";
-  String pdfPath;
+  final String title;
+  final String pdfPath;
   PDFScreen(this.title, this.pdfPath);
 
 @override

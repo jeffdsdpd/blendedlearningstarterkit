@@ -57,5 +57,6 @@ class _RootPageState extends State<RootPage> {
           onSignedOut: _signedOut
         );
     }
+    return widget;
   }
 }
