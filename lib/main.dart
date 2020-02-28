@@ -1,4 +1,4 @@
-import 'package:blendedlearningstarterkit/auth.dart';
+import 'package:blendedlearningtoolkit/auth.dart';
 import 'package:flutter/material.dart';
 import 'auth.dart';
 import 'root_page.dart';

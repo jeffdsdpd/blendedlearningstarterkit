@@ -1,6 +1,5 @@
-import 'package:blendedlearningstarterkit/doc_category/definition_page.dart';
-import 'package:blendedlearningstarterkit/doc_category/resource_page.dart';
-import 'package:blendedlearningstarterkit/doc_category/store_page.dart';
+import 'package:blendedlearningtoolkit/doc_category/definition_page.dart';
+import 'package:blendedlearningtoolkit/doc_category/resource_page.dart';
 import 'package:flutter/material.dart';
 import 'package:koukicons/collaboration.dart';
 import 'package:koukicons/vid3.dart';
@@ -9,6 +8,8 @@ import 'auth.dart';
 import 'package:koukicons/archive.dart';
 import 'package:koukicons/approval.dart';
 import 'package:koukicons/shop.dart';
+
+import 'doc_category/webview_page.dart';
 
 class HomePage extends StatefulWidget {
 HomePage({this.auth, this.onSignedOut});
@@ -32,12 +33,12 @@ void _signOut() async {
 }
 
 final List<String> litems = [
-    "Training Videos",
+    "Training",
     "Resources",
     "Certification",
     "Store",
     "Blog",
-    "Contact Us"
+    "Contact"
   ];
 
 final List licons = [
@@ -54,7 +55,7 @@ void _onButtonPressed(int index) {
       case 0: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DefinitionPage()));
+                    builder: (context) => DefinitionPage(auth: widget.auth, onSignedOut: widget.onSignedOut)));
                     }
       break; 
      
@@ -68,28 +69,28 @@ void _onButtonPressed(int index) {
       case 2: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebViewContainer('https://www.dsdcoaching.com/')));
+                    builder: (context) => WebViewContainer('https://www.dsdcoaching.com/', 'Certification')));
                     }
       break; 
      
       case 3: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/store.html')));
+                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/store.html', 'Store')));
                     }
       break;
 
       case 4: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/blended-learning-blog')));
+                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/blended-learning-blog', 'Blog')));
                     }
       break;
 
       case 5: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/contact-us.html')));
+                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/contact-us.html', 'Contact Us')));
                     }
       break; 
      
@@ -129,19 +130,26 @@ void _onButtonPressed(int index) {
         ),
       );
 
-  get header => ListTile(
-    contentPadding: EdgeInsets.only(left: 20, right: 20, top: 80, bottom: 20),
-    title: Column(
-          children: <Widget>[
-            Text('DSDProfessionalDevelopment',
-            style: TextStyle(color: Colors.black, fontSize: 28.0),
-          ),
-              Text('Blended Learning Starterkit',
-              style: TextStyle(color: Colors.black, fontSize: 24.0,),
-          )
-        ],
-        ),
-  );
+  get header => AppBar(
+      backgroundColor: Color(0xFF95D03A),
+      title: RichText(
+            text: TextSpan(children: [
+              TextSpan(text: 'DSD Professional Development', style: TextStyle(fontSize: 15.0)
+              ),
+              TextSpan(text: '\n ', style: TextStyle(fontSize: 10.0)),
+              TextSpan( text: 'Blended Learning Guide', style: TextStyle(fontSize: 20.0)
+              )
+            ],
+            style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 25.0, fontWeight: FontWeight.bold),
+            ),
+          textAlign: TextAlign.center),
+          actions: <Widget>[
+        FlatButton(
+          child: Text('Logout', style: TextStyle(fontSize: 15.0, color: Colors.white)), 
+          onPressed: _signOut
+        )
+      ],
+    );
 
   get grid => Expanded(
         child: Container(
@@ -167,7 +175,7 @@ void _onButtonPressed(int index) {
                       ), 
                       Padding(padding: EdgeInsets.all(12.0),
                       ), 
-                      Text(litems[index], style: TextStyle(fontSize: 25, color: Colors.black),
+                      Text(litems[index], style: TextStyle(fontSize: 21, color: Colors.black),
                       ),
                     ],
                   ),

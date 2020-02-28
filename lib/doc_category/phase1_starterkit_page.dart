@@ -1,23 +1,15 @@
-import 'package:blendedlearningtoolkit/models/lesson.dart';
+import 'package:blendedlearningtoolkit/doc_category/webview_page.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:blendedlearningtoolkit/mobile_pdf.dart';
 
-class DetailPage extends StatefulWidget {
+class Phase1StarterKitPage extends StatefulWidget {
 
-  final Lesson lesson;
-  DetailPage({Key key, this.lesson}) : super(key: key);
+  Phase1StarterKitPage();
 
   @override
-  State<StatefulWidget> createState() => _DetailPageState();
+  State<StatefulWidget> createState() => _Phase1StarterKitPageState();
 }
   
-class _DetailPageState extends State<DetailPage> {
-
-  Future<void> _getData(BuildContext context, String title, String title1) async {
-    var data = await FirebaseStorage.instance.ref().child(title).getData(10 * 1024 * 1024);
-    LaunchFile().launchPDF(context, title1, data);
-  }
+class _Phase1StarterKitPageState extends State<Phase1StarterKitPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +20,7 @@ class _DetailPageState extends State<DetailPage> {
           border: new Border.all(color: Colors.white),
           borderRadius: BorderRadius.circular(5.0)),
       child: new Text(
-        // "$20",
-        "\$" + this.widget.lesson.price.toString(),
+        "\$0.00",
         style: TextStyle(color: Colors.white),
       ),
     );
@@ -49,7 +40,7 @@ class _DetailPageState extends State<DetailPage> {
         ),
         SizedBox(height: 10.0),
         Text(
-          this.widget.lesson.title,
+          'Phase 1 Starter Kit',
           style: TextStyle(color: Colors.white, fontSize: 40.0),
         ),
         SizedBox(height: 30.0),
@@ -57,7 +48,7 @@ class _DetailPageState extends State<DetailPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Expanded(
-                flex: 5,
+                flex: 4,
                 child: Padding(
                     padding: EdgeInsets.only(left: 10.0),
                 )
@@ -93,14 +84,18 @@ class _DetailPageState extends State<DetailPage> {
     );
 
     final bottomContentText = Text(
-      this.widget.lesson.content,
+      'Overview guide for Phase One and Planning template for Phase One. This document contains three pages.',
       style: TextStyle(fontSize: 18.0),
     );
     final readButton = Container(
         padding: EdgeInsets.symmetric(vertical: 60.0),
         width: MediaQuery.of(context).size.width,
         child: RaisedButton(
-          onPressed: () => _getData(context, this.widget.lesson.fileIndicatorValue, this.widget.lesson.title),
+          onPressed: () => { Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/store/p58/Phase_One_Starter_Kit.html', 'Starter Kit')))
+                    },
           color: Color.fromRGBO(58, 66, 86, 1.0),
           child:
               Text("VIEW THIS DOCUMENT", style: TextStyle(color: Colors.white)),

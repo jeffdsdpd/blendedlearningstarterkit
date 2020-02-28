@@ -1,23 +1,15 @@
-import 'package:blendedlearningtoolkit/models/lesson.dart';
+import 'package:blendedlearningtoolkit/doc_category/webview_page.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:blendedlearningtoolkit/mobile_pdf.dart';
 
-class DetailPage extends StatefulWidget {
+class DeploymentPlanPage extends StatefulWidget {
 
-  final Lesson lesson;
-  DetailPage({Key key, this.lesson}) : super(key: key);
+  DeploymentPlanPage();
 
   @override
-  State<StatefulWidget> createState() => _DetailPageState();
+  State<StatefulWidget> createState() => _DeploymentPlanPageState();
 }
   
-class _DetailPageState extends State<DetailPage> {
-
-  Future<void> _getData(BuildContext context, String title, String title1) async {
-    var data = await FirebaseStorage.instance.ref().child(title).getData(10 * 1024 * 1024);
-    LaunchFile().launchPDF(context, title1, data);
-  }
+class _DeploymentPlanPageState extends State<DeploymentPlanPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +20,7 @@ class _DetailPageState extends State<DetailPage> {
           border: new Border.all(color: Colors.white),
           borderRadius: BorderRadius.circular(5.0)),
       child: new Text(
-        // "$20",
-        "\$" + this.widget.lesson.price.toString(),
+        "\$0.00",
         style: TextStyle(color: Colors.white),
       ),
     );
@@ -49,7 +40,7 @@ class _DetailPageState extends State<DetailPage> {
         ),
         SizedBox(height: 10.0),
         Text(
-          this.widget.lesson.title,
+          'Deployment Plan',
           style: TextStyle(color: Colors.white, fontSize: 40.0),
         ),
         SizedBox(height: 30.0),
@@ -57,7 +48,7 @@ class _DetailPageState extends State<DetailPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Expanded(
-                flex: 5,
+                flex: 4,
                 child: Padding(
                     padding: EdgeInsets.only(left: 10.0),
                 )
@@ -93,14 +84,18 @@ class _DetailPageState extends State<DetailPage> {
     );
 
     final bottomContentText = Text(
-      this.widget.lesson.content,
+      'This month by month guide will guide any teacher, coach, or administrator through the rollout process of Blended Learning.',
       style: TextStyle(fontSize: 18.0),
     );
     final readButton = Container(
         padding: EdgeInsets.symmetric(vertical: 60.0),
         width: MediaQuery.of(context).size.width,
         child: RaisedButton(
-          onPressed: () => _getData(context, this.widget.lesson.fileIndicatorValue, this.widget.lesson.title),
+          onPressed: () => { Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => WebViewContainer('https://www.blendedlearningpd.com/deployment-plan.html', 'Deployment Plan')))
+                    },
           color: Color.fromRGBO(58, 66, 86, 1.0),
           child:
               Text("VIEW THIS DOCUMENT", style: TextStyle(color: Colors.white)),

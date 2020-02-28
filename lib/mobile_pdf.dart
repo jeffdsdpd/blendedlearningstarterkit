@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:blendedlearningstarterkit/pdf_screen.dart';
+import 'package:blendedlearningtoolkit/pdf_screen.dart';
 
 class LaunchFile {
   Future<void> launchPDF(BuildContext context, String title, Uint8List data) async {

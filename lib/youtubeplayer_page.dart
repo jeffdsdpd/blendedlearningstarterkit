@@ -52,10 +52,16 @@ class _YouTubePlayerState extends State<YouTubePlayer> {
                icon: Icon(Icons.arrow_back, color: Colors.white),
                onPressed: () => Navigator.of(context).pop(),
               ), 
-        title: Text(
-          'Blended Learning Starterkit',
-          style: TextStyle(color: Colors.white),
-        ),
+        title: RichText(
+            text: TextSpan(children: [
+              TextSpan(
+                text: 'Blended Learning',
+              ),
+              TextSpan(text: "\n"),
+            ],
+            style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 25.0, fontWeight: FontWeight.bold),
+            ),
+          textAlign: TextAlign.center),
       ),
       body: ListView(
         children: [

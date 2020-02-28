@@ -1,6 +1,8 @@
-import 'package:blendedlearningstarterkit/doc_category/category.dart';
-import 'package:blendedlearningstarterkit/doc_category/future_ready.dart';
-import 'package:blendedlearningstarterkit/doc_category/phase1_checklist.dart';
+import 'package:blendedlearningtoolkit/doc_category/category.dart';
+import 'package:blendedlearningtoolkit/doc_category/deployment_plan_page.dart';
+import 'package:blendedlearningtoolkit/doc_category/future_ready.dart';
+import 'package:blendedlearningtoolkit/doc_category/phase1_checklist.dart';
+import 'package:blendedlearningtoolkit/doc_category/phase1_starterkit_page.dart';
 import 'package:flutter/material.dart';
 import '../auth.dart';
 
@@ -105,17 +107,15 @@ void _signOut() async {
 
     final topAppBar = AppBar(
       backgroundColor: Color(0xFF95D03A),
-      title: RichText(
+       title: RichText(
             text: TextSpan(children: [
-              TextSpan(
-                text: 'Blended Learning',
+              TextSpan(text: 'Blended Learning', style: TextStyle(fontSize: 22.0)
               ),
-              TextSpan(text: "\n"),
-              TextSpan(
-                text: 'Resources',
+              TextSpan(text: '\n ', style: TextStyle(fontSize: 28.0)),
+              TextSpan( text: 'Resources', style: TextStyle(fontSize: 25.0)
               )
             ],
-            style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 15.0, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 25.0, fontWeight: FontWeight.bold),
             ),
           textAlign: TextAlign.center),
       actions: <Widget>[
@@ -126,33 +126,30 @@ void _signOut() async {
       ],
     );
 
-    final makeBottom = BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home),title: Text('Home')),
-          BottomNavigationBarItem(icon: Icon(Icons.picture_as_pdf),title: Text('BL Docs')),
-          BottomNavigationBarItem(icon: Icon(Icons.videocam),title: Text('BL Videos')),
-          BottomNavigationBarItem(icon: Icon(Icons.video_label),title: Text('Misc')),
-        ],
-      );
-    
-    
     return Scaffold(
       backgroundColor: Color(0xFF95D03A),
       appBar: topAppBar,
       body: makeBody,
-      bottomNavigationBar: makeBottom,
     );
   }
 }
 
 List getCategories() {
   return [
-     Category(
+    Category(
+        title: "Phase 1 Starter Kit",
+        pagename: Phase1StarterKitPage()),
+    
+    Category(
+        title: "Phase 1 Checklists",
+        pagename: Phase1Page()),
+
+    Category(
         title: "Future Ready Activities",
         pagename: FutureReadyPage()),
 
     Category(
-        title: "Phase 1 Checklists",
-        pagename: Phase1Page())
+        title: "Deployment Plan",
+        pagename: DeploymentPlanPage())
   ];
 }

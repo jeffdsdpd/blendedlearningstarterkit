@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>160194153695-3ikv2pusg3u7kuj50b5acp4k6httt5dk.apps.googleusercontent.com</string>
+	<string>160194153695-et4c8gcte034f6fgqtf9qj8e316m06bj.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.160194153695-3ikv2pusg3u7kuj50b5acp4k6httt5dk</string>
+	<string>com.googleusercontent.apps.160194153695-et4c8gcte034f6fgqtf9qj8e316m06bj</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDBbwRgYbPfp8VTCITnz40bC0wd5jrESu4</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.blendedlearningstarterkit</string>
+	<string>com.dsdprofessionaldevelopment</string>
 	<key>PROJECT_ID</key>
 	<string>blendedlearning-startkit</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:160194153695:ios:8a35fddb6f5d855ff26d6a</string>
+	<string>1:160194153695:ios:95494dea600efc69f26d6a</string>
 	<key>DATABASE_URL</key>
 	<string>https://blendedlearning-startkit.firebaseio.com</string>
 </dict>

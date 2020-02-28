@@ -1,7 +1,7 @@
-import 'package:blendedlearningstarterkit/auth.dart';
+import 'package:blendedlearningtoolkit/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:blendedlearningstarterkit/detail_page.dart';
-import 'package:blendedlearningstarterkit/models/lesson.dart';
+import 'package:blendedlearningtoolkit/detail_page.dart';
+import 'package:blendedlearningtoolkit/models/lesson.dart';
 
 class Phase1Page extends StatefulWidget {
 Phase1Page({this.auth, this.onSignedOut});
@@ -101,7 +101,7 @@ void _signOut() async {
                 text: 'Resources',
               )
             ],
-            style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 15.0, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 22.0, fontWeight: FontWeight.bold),
             ),
           textAlign: TextAlign.center),
       actions: <Widget>[
@@ -112,39 +112,10 @@ void _signOut() async {
       ],
     );
 
-    final makeBottom = Container(
-        height: 55.0,
-        child: BottomAppBar(
-          color: Color.fromRGBO(58, 66, 86, 1.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.home, color: Colors.white),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(Icons.picture_as_pdf, color: Colors.white),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(Icons.videocam, color: Colors.white),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(Icons.video_label, color: Colors.white),
-                onPressed: () {},
-              )
-            ],
-          ),
-        ),
-      );
-
     return Scaffold(
       backgroundColor: Color(0xFF95D03A),
       appBar: topAppBar,
       body: makeBody,
-      bottomNavigationBar: makeBottom,
     );
   }
 }
@@ -152,21 +123,15 @@ void _signOut() async {
 List getLessons() {
   return [
     Lesson(
-        title: "Phase1 Checklist",
-        fileIndicatorValue: "BlendedLearningDocuments/Phase1Checklist/Phase1ChecklistV1.pdf",
-        price: 0,
-        content: "This is one version of a Phase 1 Checklist which can be used to transform a classroom into a Phase 1 Blended Learning Classroom"),
-
-    Lesson(
-        title: "Phase1 Checklist",
+        title: "Phase1 & Phase2 Checklist",
         fileIndicatorValue: "BlendedLearningDocuments/Phase1Checklist/Phase1ChecklistV2.pdf",
         price: 0,
-        content: "This is another version of a Phase 1 Checklist which can be used to transform a classroom into a Phase 1 Blended Learning Classroom"),
+        content: "This document includes both a Phase 1 and Phase 2 Checlist template for a Blended Learning Classroom"),
 
     Lesson(
         title: "Phase1 Checklist",
         fileIndicatorValue: "BlendedLearningDocuments/Phase1Checklist/Phase1ChecklistV3.pdf",
         price: 0,
-        content: "This is another version of a Phase 1 Checklist which can be used to transform a classroom into a Phase 1 Blended Learning Classroom"),
+        content: "This is a Phase 1 Checklist which can be used to transform a classroom into a Phase 1 Blended Learning Classroom"),
   ];
 }

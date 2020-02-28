@@ -1,4 +1,4 @@
-import 'package:blendedlearningstarterkit/home_page.dart';
+import 'package:blendedlearningtoolkit/home_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'auth.dart';
@@ -19,6 +19,7 @@ enum AuthStatus {
 
 class _RootPageState extends State<RootPage> {
 
+  //always log out user when starting app
   AuthStatus authStatus = AuthStatus.notSignedIn;
 
   @override
@@ -26,8 +27,7 @@ class _RootPageState extends State<RootPage> {
     super.initState();
     widget.auth.currentUser().then((userId) {
       setState(() {
-        //authStatus = userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
-      });
+        });
     });
   }
 

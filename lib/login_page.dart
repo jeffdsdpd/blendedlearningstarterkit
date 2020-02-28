@@ -36,11 +36,9 @@ class _LoginPageState extends State<LoginPage> {
     if(validateAndSave()) {
       try {
         if (_formType == FormType.login) {
-          String userId = await widget.auth.signInWithEmailAndPassword(_email, _password);
-          print('attempted to login - result is '+userId);
+          await widget.auth.signInWithEmailAndPassword(_email, _password);
         } else {
-          String userId = await widget.auth.createUserWithEmailAndPassword(_email, _password);
-          print('attempted to create user - result is '+userId);
+          await widget.auth.createUserWithEmailAndPassword(_email, _password);
         }
         widget.onSignedIn();
       } catch (e) {
