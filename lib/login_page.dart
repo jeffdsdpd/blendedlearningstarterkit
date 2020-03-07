@@ -64,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Color(0xFF95D03A),
         title: Column(
@@ -89,10 +90,10 @@ class _LoginPageState extends State<LoginPage> {
 
         decoration: BoxDecoration(
           image: DecorationImage(
-            alignment: Alignment(0.1, 0.3),
-            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.dstATop),
+            alignment: Alignment(0.0, 0.3),
+            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),
             image: AssetImage(
-                'assets/images/dsdpdlogo.png'),
+                'assets/images/3PhasesBL.png'),
             fit: BoxFit.scaleDown,
           ),
           shape: BoxShape.circle,

@@ -49,15 +49,6 @@ void _signOut() async {
             lesson.title,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.0),
           ),
-          subtitle: Row(
-            children: <Widget>[
-              Expanded(
-                  flex: 1,
-                  child: Container(
-                  )
-                ),
-            ],
-          ),
           onTap:() {
             Navigator.push(
                 context,

@@ -1,6 +1,7 @@
 import 'package:blendedlearningtoolkit/doc_category/category.dart';
 import 'package:blendedlearningtoolkit/doc_category/deployment_plan_page.dart';
 import 'package:blendedlearningtoolkit/doc_category/future_ready.dart';
+import 'package:blendedlearningtoolkit/doc_category/levelup_page.dart';
 import 'package:blendedlearningtoolkit/doc_category/phase1_checklist.dart';
 import 'package:blendedlearningtoolkit/doc_category/phase1_starterkit_page.dart';
 import 'package:flutter/material.dart';
@@ -65,15 +66,6 @@ void _signOut() async {
             category.title,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0),
           ),
-          subtitle: Row(
-            children: <Widget>[
-              Expanded(
-                  flex: 1,
-                  child: Container(
-                  )
-                ),
-            ],
-          ),
           onTap:() {
             Navigator.push(
                 context,
@@ -84,7 +76,7 @@ void _signOut() async {
 
     Card makeCard(Category category) => Card(
           elevation: 8.0,
-          margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+          margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
           child: Container(
             decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
             child: makeListTile(category),
@@ -150,6 +142,10 @@ List getCategories() {
 
     Category(
         title: "Deployment Plan",
-        pagename: DeploymentPlanPage())
+        pagename: DeploymentPlanPage()),
+
+    Category(
+        title: "How to Advance",
+        pagename: LevelUpPage()),
   ];
 }

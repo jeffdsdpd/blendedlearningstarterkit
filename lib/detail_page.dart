@@ -14,10 +14,10 @@ class DetailPage extends StatefulWidget {
   
 class _DetailPageState extends State<DetailPage> {
 
-  Future<void> _getData(BuildContext context, String title, String title1) async {
-    var data = await FirebaseStorage.instance.ref().child(title).getData(10 * 1024 * 1024);
-    LaunchFile().launchPDF(context, title1, data);
-  }
+Future<void> _getData(BuildContext context, String title, String title1) async {
+  var data = await FirebaseStorage.instance.ref().child(title).getData(10 * 1024 * 1024);
+  LaunchFile().launchPDF(context, title1, data);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +102,7 @@ class _DetailPageState extends State<DetailPage> {
         child: RaisedButton(
           onPressed: () => _getData(context, this.widget.lesson.fileIndicatorValue, this.widget.lesson.title),
           color: Color.fromRGBO(58, 66, 86, 1.0),
-          child:
-              Text("VIEW THIS DOCUMENT", style: TextStyle(color: Colors.white)),
+          child: Text("VIEW THIS DOCUMENT", style: TextStyle(color: Colors.white)),
         ));
     final bottomContent = Container(
       // height: MediaQuery.of(context).size.height,
