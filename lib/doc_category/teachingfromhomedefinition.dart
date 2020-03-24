@@ -1,21 +1,21 @@
 import 'package:blendedlearningtoolkit/auth.dart';
-import 'package:blendedlearningtoolkit/doc_category/videolist.dart';
+import 'package:blendedlearningtoolkit/doc_category/teachathomevideolist.dart';
 import 'package:blendedlearningtoolkit/youtubeplayer_page.dart';
 import 'package:flutter/material.dart';
 
-class DefinitionPage extends StatefulWidget {
-DefinitionPage({this.auth, this.onSignedOut});
+class TeachingFromHomeDefinitionPage extends StatefulWidget {
+TeachingFromHomeDefinitionPage({this.auth, this.onSignedOut});
 
 final BaseAuth auth;
 final VoidCallback onSignedOut;
 
 @override
-  _DefinitionPageState createState() => _DefinitionPageState();
+  _TeachingFromHomeDefinitionPageState createState() => _TeachingFromHomeDefinitionPageState();
 }
 
-class _DefinitionPageState extends State<DefinitionPage> {
+class _TeachingFromHomeDefinitionPageState extends State<TeachingFromHomeDefinitionPage> {
   List lessons;
-  final List<Video> _allVideos = Video.allCities();
+  final List<TeachAtHomeVideo> _allVideos = TeachAtHomeVideo.allVideos();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _DefinitionPageState extends State<DefinitionPage> {
               TextSpan(text: 'Blended Learning', style: TextStyle(fontSize: 22.0)
               ),
               TextSpan(text: '\n ', style: TextStyle(fontSize: 28.0)),
-              TextSpan( text: 'Training', style: TextStyle(fontSize: 25.0)
+              TextSpan( text: 'Teach At Home', style: TextStyle(fontSize: 22.0)
               )
             ],
             style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 25.0, fontWeight: FontWeight.bold),
@@ -60,7 +60,7 @@ getHomePageBody(BuildContext context) {
 
             title: new Text(
               _allVideos[index].title,
-              style: new TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
             subtitle: new Column(
                 mainAxisAlignment: MainAxisAlignment.start,

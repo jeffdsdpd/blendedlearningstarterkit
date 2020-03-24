@@ -27,15 +27,6 @@ class _ResourcePageState extends State<ResourcePage> {
     super.initState();
   }
 
-void _signOut() async {
-  try {
-    await widget.auth.signOut();
-    widget.onSignedOut();
-  } catch (e) {
-    print(e);
-  }
-}
-
 @override
   Widget build(BuildContext context) {
     ListTile makeListTile(Category category) => ListTile(
@@ -110,12 +101,6 @@ void _signOut() async {
             style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 25.0, fontWeight: FontWeight.bold),
             ),
           textAlign: TextAlign.center),
-      actions: <Widget>[
-        FlatButton(
-          child: Text('Logout', style: TextStyle(fontSize: 15.0, color: Colors.white)), 
-          onPressed: _signOut
-        )
-      ],
     );
 
     return Scaffold(

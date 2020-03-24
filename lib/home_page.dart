@@ -1,5 +1,6 @@
 import 'package:blendedlearningtoolkit/doc_category/definition_page.dart';
 import 'package:blendedlearningtoolkit/doc_category/resource_page.dart';
+import 'package:blendedlearningtoolkit/main.dart';
 import 'package:flutter/material.dart';
 import 'package:koukicons/collaboration.dart';
 import 'package:koukicons/vid3.dart';
@@ -8,7 +9,6 @@ import 'auth.dart';
 import 'package:koukicons/archive.dart';
 import 'package:koukicons/approval.dart';
 import 'package:koukicons/shop.dart';
-
 import 'doc_category/webview_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,16 +23,8 @@ final VoidCallback onSignedOut;
 
 class _HomePageState extends State<HomePage> {
 
-void _signOut() async {
-  try {
-    await widget.auth.signOut();
-    widget.onSignedOut();
-  } catch (e) {
-    print(e);
-  }
-}
-
 final List<String> litems = [
+    "Teaching From Home",
     "Training",
     "Resources",
     "Certification",
@@ -42,6 +34,16 @@ final List<String> litems = [
   ];
 
 final List licons = [
+  SizedBox(
+    child: IconButton(
+      padding: EdgeInsets.all(0.0),
+      iconSize: 150.0,
+      icon:  Image.asset('assets/images/teachingfromhome1.png'),
+    onPressed:(){
+       navigatorKey.currentState.pushNamed('/teachingfromhome'); 
+    }
+  )
+  ),
   KoukiconsVid3(width: 85.0),
   KoukiconsArchive(width: 85.0),
   KoukiconsApproval(width: 85.0),
@@ -50,49 +52,82 @@ final List licons = [
   KoukiconsCollaboration(width: 85.0)
 ];
 
+TextStyle _setTextStyle(int index) {
+   switch(index) {
+    case 0: { return TextStyle(fontSize: 18, color: Colors.black);} break;
+    case 1: { return TextStyle(fontSize: 21, color: Colors.black);} break;
+    case 2: { return TextStyle(fontSize: 21, color: Colors.black);} break;
+    case 3: { return TextStyle(fontSize: 21, color: Colors.black);} break;
+    case 4: { return TextStyle(fontSize: 21, color: Colors.black);} break;
+    case 5: { return TextStyle(fontSize: 21, color: Colors.black);} break;
+    case 6: { return TextStyle(fontSize: 21, color: Colors.black);} break;
+    default: { return TextStyle(fontSize: 21, color: Colors.black);} break;
+   }
+}
+
+double _setIconSize(int index) {
+  switch(index) {
+    case 0: { return 88;} break;
+    case 1: { return 85;} break;
+    case 2: { return 85;} break;
+    case 3: { return 85;} break;
+    case 4: { return 85;} break;
+    case 5: { return 85;} break;
+    case 6: { return 85;} break;
+    default: { return 85;} break;
+   }
+}
+
 void _onButtonPressed(int index) {
-  switch(index) { 
+  switch(index) {
       case 0: { Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => DefinitionPage(auth: widget.auth, onSignedOut: widget.onSignedOut)));
                     }
       break; 
-     
+
       case 1: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => ResourcePage()));
+                    builder: (context) => DefinitionPage(auth: widget.auth, onSignedOut: widget.onSignedOut)));
                     }
       break; 
      
       case 2: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebViewContainer('https://www.dsdcoaching.com/', 'Certification')));
+                    builder: (context) => ResourcePage()));
                     }
       break; 
      
       case 3: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/store.html', 'Store')));
+                    builder: (context) => WebViewContainer('https://www.dsdcoaching.com/', 'Certification')));
                     }
-      break;
-
+      break; 
+     
       case 4: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/blended-learning-blog', 'Blog')));
+                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/store.html', 'Store')));
                     }
       break;
 
       case 5: { Navigator.push(
                 context,
                 MaterialPageRoute(
+                    builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/blended-learning-blog', 'Blog')));
+                    }
+      break;
+
+      case 6: { Navigator.push(
+                context,
+                MaterialPageRoute(
                     builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/contact-us.html', 'Contact Us')));
                     }
-      break; 
+      break;
      
       default: { print("Invalid choice"); } 
       break; 
@@ -143,25 +178,20 @@ void _onButtonPressed(int index) {
             style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 25.0, fontWeight: FontWeight.bold),
             ),
           textAlign: TextAlign.center),
-          actions: <Widget>[
-        FlatButton(
-          child: Text('Logout', style: TextStyle(fontSize: 15.0, color: Colors.white)), 
-          onPressed: _signOut
-        )
-      ],
     );
 
   get grid => Expanded(
         child: Container(
-          padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+          padding: EdgeInsets.only(top: 0, right: 50, left: 50, bottom: 5),
           child: GridView.count(
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
+            padding:EdgeInsets.only(top: 10, right: 0, left: 0, bottom: 0),
+            crossAxisSpacing: 36,
+            mainAxisSpacing: 20,
             crossAxisCount: 2,
             childAspectRatio: .90,
             children: List.generate(litems.length, (index) {
               return Card(
-                elevation: 2,
+                elevation: 5,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)
                 ),
@@ -170,12 +200,12 @@ void _onButtonPressed(int index) {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[IconButton(icon:
                       licons[index],
-                      iconSize: 85.0,
+                      iconSize: _setIconSize(index),
                       onPressed: (){_onButtonPressed(index);}
                       ), 
-                      Padding(padding: EdgeInsets.all(12.0),
-                      ), 
-                      Text(litems[index], style: TextStyle(fontSize: 21, color: Colors.black),
+                      Padding(padding: EdgeInsets.all(0.0),
+                      ),
+                      Text(litems[index], textAlign: TextAlign.center, style: _setTextStyle(index)
                       ),
                     ],
                   ),

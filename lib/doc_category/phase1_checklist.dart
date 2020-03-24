@@ -22,15 +22,6 @@ class _Phase1PageState extends State<Phase1Page> {
     super.initState();
   }
 
-void _signOut() async {
-  try {
-    await widget.auth.signOut();
-    widget.onSignedOut();
-  } catch (e) {
-    print(e);
-  }
-}
-
 @override
   Widget build(BuildContext context) {
     ListTile makeListTile(Lesson lesson) => ListTile(
@@ -95,12 +86,6 @@ void _signOut() async {
             style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 22.0, fontWeight: FontWeight.bold),
             ),
           textAlign: TextAlign.center),
-      actions: <Widget>[
-        FlatButton(
-          child: Text('Logout', style: TextStyle(fontSize: 15.0, color: Colors.white)), 
-          onPressed: _signOut
-        )
-      ],
     );
 
     return Scaffold(

@@ -23,19 +23,11 @@ class _LevelUpPageState extends State<LevelUpPage> {
     _myActivityResult = '';
   }
 
-  Future<void> _getData(BuildContext context, String title, String title1) async {
-    var data = await FirebaseStorage.instance.ref().child('/BlendedLearningDocuments/LevelUpDocuments/'+title).getData(10 * 1024 * 1024);
+  Future<void> _getData(BuildContext context, String filename, String title1) async {
+    var data = await FirebaseStorage.instance.ref().child('/BlendedLearningDocuments/LevelUpDocuments/'+filename).getData(10 * 1024 * 1024);
+    print('filename is '+filename);
     LaunchFile().launchPDF(context, title1, data);
   }
-
-  void _signOut() async {
-  try {
-    await widget.auth.signOut();
-    widget.onSignedOut();
-  } catch (e) {
-    print(e);
-  }
-}
 
 List<String> _categories = [
     'Planning',
@@ -50,14 +42,8 @@ List<String> _categories = [
     'Technology'
   ];
 
-  List<String> _levels = [
-    'Phase Level 1',
-    'Phase Level 2',
-    'Phase Level 3'
-  ];
-
   var _currentItemSelected = 'Planning';
-  var _currentLevelSelected = 'Phase Level 1';
+
   var lesson = Lesson(
         title: "LevelUp Data",
         fileIndicatorValue: "BlendedLearningDocuments/Phase1Checklist/Phase1ChecklistV2.pdf",
@@ -81,12 +67,6 @@ List<String> _categories = [
             style: TextStyle(color: Color.fromRGBO(58, 66, 86, 1), fontSize: 25.0, fontWeight: FontWeight.bold),
             ),
           textAlign: TextAlign.center),
-      actions: <Widget>[
-        FlatButton(
-          child: Text('Logout', style: TextStyle(fontSize: 15.0, color: Colors.white)), 
-          onPressed: _signOut
-        )
-      ],
     ),
       body: Center(
         child: Theme(
@@ -98,13 +78,14 @@ List<String> _categories = [
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
+                margin: EdgeInsets.only(top: 25),
                 color: Color.fromRGBO(58, 66, 86, 1),
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(18),
                 child: DropdownButtonFormField<String>(
                   iconSize: 50.0,
                   decoration: InputDecoration(
                     labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 32.0, color: Colors.white),
-                    labelText: 'Select a Category',
+                    labelText: 'Select a Level Up Item',
                   ),
                   iconEnabledColor: Colors.white,
                   items: _categories.map((String dropDownStringItem) {
@@ -125,36 +106,11 @@ List<String> _categories = [
               Divider(
                 height: 10.0,
                 color: Theme.of(context).primaryColor),
-                Container(
-                color: Color.fromRGBO(58, 66, 86, 1),
-                padding: EdgeInsets.all(8),
-                child: DropdownButtonFormField<String>(
-                  iconSize: 50.0,
-                  decoration: InputDecoration(
-                    labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 32.0, color: Colors.white),
-                    labelText: 'Select a Level',
-                  ),
-                  iconEnabledColor: Colors.white,
-                  items: _levels.map((String dropDownStringItem) {
-                    return DropdownMenuItem<String>(
-                      value: dropDownStringItem,
-                      child: Text(
-                        dropDownStringItem, 
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.white),
-                        ),
-                    );
-                  }).toList(),
-                  onChanged: (String newValueSelected) {
-                    _onDropDownValueSelected(newValueSelected);
-                  },
-                  value: _currentLevelSelected,
-                )
-              ),
               Container(
                 padding: EdgeInsets.all(8),
                 child: RaisedButton(
                   child: Text('Display'),
-                  onPressed: () => _getData(context, _currentItemSelected+_currentLevelSelected+'.pdf', lesson.title),
+                  onPressed: () => _getData(context, _currentItemSelected+'.pdf', lesson.title),
                 ),
               ),
               Container(
@@ -172,12 +128,6 @@ List<String> _categories = [
   _onDropDownItemSelected(String newValueSelected) {
     setState(() {
       this._currentItemSelected = newValueSelected;
-    });
-  }
-
-  _onDropDownValueSelected(String newValueSelected) {
-    setState(() {
-      this._currentLevelSelected = newValueSelected;
     });
   }
 }
