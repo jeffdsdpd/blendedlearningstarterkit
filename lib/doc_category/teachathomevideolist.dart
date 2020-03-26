@@ -10,14 +10,14 @@ class TeachAtHomeVideo{
   static List<TeachAtHomeVideo> allVideos() {
     var listOfVideos = new List<TeachAtHomeVideo>();
 
-    listOfVideos.add(new TeachAtHomeVideo(title:"Getting Started",
+    listOfVideos.add(new TeachAtHomeVideo(title:"Getting Started - Webinar",
                               image: "teachingfromhome1.png",
                               url: "s6CdKkh-tu0", 
-                              description: "This video discusses some topics and tools to utilize for learning at home."));
+                              description: "This video webinar discusses some topics and tools to utilize for learning at home."));
 
     listOfVideos.add(new TeachAtHomeVideo(title:"Part 1 - Making Videos",
                               image: "teachingfromhome1.png",
-                              url: "vIHL7XRThzc",
+                              url: "PNM6byJBswk",
                               description: "Part One discusses different tools to create and manage your videos.'"));
 
     listOfVideos.add(new TeachAtHomeVideo(title:"Part 2 - Google Classroom",
@@ -39,6 +39,10 @@ class TeachAtHomeVideo{
                               image: "teachingfromhome1.png",
                               url: "rDhCAjrqHH8",
                               description: "Part Five demonstrates how to design a lesson for home.'"));
+
+    listOfVideos.add(new TeachAtHomeVideo(title:"Teaching At Home Toolkit",
+                              image: "3PhasesBL1.png",
+                              description: "Teaching At Home Toolkit.'"));
 
     return listOfVideos;
 }

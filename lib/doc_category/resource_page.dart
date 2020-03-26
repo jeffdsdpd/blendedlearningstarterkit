@@ -57,13 +57,15 @@ class _ResourcePageState extends State<ResourcePage> {
             category.title,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0),
           ),
+          
           onTap:() {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => category.pagename));
           },
-        );
+          
+    );
 
     Card makeCard(Category category) => Card(
           elevation: 8.0,

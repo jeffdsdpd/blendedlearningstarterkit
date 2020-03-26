@@ -1,5 +1,6 @@
 import 'package:blendedlearningtoolkit/auth.dart';
 import 'package:blendedlearningtoolkit/doc_category/teachathomevideolist.dart';
+import 'package:blendedlearningtoolkit/doc_category/webview_page.dart';
 import 'package:blendedlearningtoolkit/youtubeplayer_page.dart';
 import 'package:flutter/material.dart';
 
@@ -34,9 +35,11 @@ class _TeachingFromHomeDefinitionPageState extends State<TeachingFromHomeDefinit
             ),
           textAlign: TextAlign.center),
     ),
-      body: new Padding(
-          padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
-          child: getHomePageBody(context)));
+      body: 
+          new Padding(padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+          child: getHomePageBody(context),
+      )
+   );
 }
 
 getHomePageBody(BuildContext context) {
@@ -62,6 +65,7 @@ getHomePageBody(BuildContext context) {
               _allVideos[index].title,
               style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
+
             subtitle: new Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,11 +76,18 @@ getHomePageBody(BuildContext context) {
                 ]),
             //trailing: ,
             onTap: () {
+              if (index != 6) {
               _launchUrlVideo(context, _allVideos[index].url);
+              } else {
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => WebViewContainer('https://www.blendedlearningpd.com/', 'Getting Started')));
+              }
             },
-          )
+          ),
         ],
-      )
+      ),
     );
   }
 
