@@ -1,7 +1,10 @@
 import 'package:blendedlearningtoolkit/doc_category/definition_page.dart';
+import 'package:blendedlearningtoolkit/doc_category/newnormalcategory_page.dart';
+import 'package:blendedlearningtoolkit/doc_category/newnormaldefinitionpage.dart';
 import 'package:blendedlearningtoolkit/doc_category/resource_page.dart';
 import 'package:blendedlearningtoolkit/main.dart';
 import 'package:flutter/material.dart';
+import 'package:koukicons/assistant.dart';
 import 'package:koukicons/collaboration.dart';
 import 'package:koukicons/vid3.dart';
 import 'package:koukicons/write.dart';
@@ -24,6 +27,7 @@ final VoidCallback onSignedOut;
 class _HomePageState extends State<HomePage> {
 
 final List<String> litems = [
+    "New Normal",
     "Teaching From Home",
     "Training",
     "Resources",
@@ -34,6 +38,7 @@ final List<String> litems = [
   ];
 
 final List licons = [
+  KoukiconsAssistant(width: 85.0),
   SizedBox(
     child: IconButton(
       padding: EdgeInsets.all(0.0),
@@ -54,13 +59,14 @@ final List licons = [
 
 TextStyle _setTextStyle(int index) {
    switch(index) {
-    case 0: { return TextStyle(fontSize: 18, color: Colors.black);} break;
-    case 1: { return TextStyle(fontSize: 21, color: Colors.black);} break;
+    case 0: { return TextStyle(fontSize: 15, color: Colors.black);} break;
+    case 1: { return TextStyle(fontSize: 10, color: Colors.black);} break;
     case 2: { return TextStyle(fontSize: 21, color: Colors.black);} break;
     case 3: { return TextStyle(fontSize: 21, color: Colors.black);} break;
-    case 4: { return TextStyle(fontSize: 21, color: Colors.black);} break;
+    case 4: { return TextStyle(fontSize: 19, color: Colors.black);} break;
     case 5: { return TextStyle(fontSize: 21, color: Colors.black);} break;
     case 6: { return TextStyle(fontSize: 21, color: Colors.black);} break;
+    case 7: { return TextStyle(fontSize: 21, color: Colors.black);} break;
     default: { return TextStyle(fontSize: 21, color: Colors.black);} break;
    }
 }
@@ -68,12 +74,13 @@ TextStyle _setTextStyle(int index) {
 double _setIconSize(int index) {
   switch(index) {
     case 0: { return 88;} break;
-    case 1: { return 85;} break;
+    case 1: { return 88;} break;
     case 2: { return 85;} break;
     case 3: { return 85;} break;
     case 4: { return 85;} break;
     case 5: { return 85;} break;
     case 6: { return 85;} break;
+    case 7: { return 85;} break;
     default: { return 85;} break;
    }
 }
@@ -83,46 +90,52 @@ void _onButtonPressed(int index) {
       case 0: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DefinitionPage(auth: widget.auth, onSignedOut: widget.onSignedOut)));
+                    builder: (context) => NewNormalCategoryPage()));
                     }
       break; 
-
       case 1: { Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => DefinitionPage(auth: widget.auth, onSignedOut: widget.onSignedOut)));
                     }
       break; 
-     
+
       case 2: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => ResourcePage()));
+                    builder: (context) => DefinitionPage(auth: widget.auth, onSignedOut: widget.onSignedOut)));
                     }
       break; 
      
       case 3: { Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => WebViewContainer('https://www.dsdcoaching.com/', 'Certification')));
+                    builder: (context) => ResourcePage()));
                     }
       break; 
      
       case 4: { Navigator.push(
                 context,
                 MaterialPageRoute(
+                    builder: (context) => WebViewContainer('https://www.dsdcoaching.com/', 'Certification')));
+                    }
+      break; 
+     
+      case 5: { Navigator.push(
+                context,
+                MaterialPageRoute(
                     builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/store.html', 'Store')));
                     }
       break;
 
-      case 5: { Navigator.push(
+      case 6: { Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/blended-learning-blog', 'Blog')));
                     }
       break;
 
-      case 6: { Navigator.push(
+      case 7: { Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => WebViewContainer('https://www.dsdprofessionaldevelopment.com/contact-us.html', 'Contact Us')));

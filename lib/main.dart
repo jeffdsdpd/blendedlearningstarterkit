@@ -1,4 +1,5 @@
 import 'package:blendedlearningtoolkit/auth.dart';
+import 'package:blendedlearningtoolkit/doc_category/newnormaldefinitionpage.dart';
 import 'package:blendedlearningtoolkit/doc_category/teachingfromhomedefinition.dart';
 import 'package:blendedlearningtoolkit/home_page.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/teachingfromhome': (context) => TeachingFromHomeDefinitionPage(),
+        '/newnormal': (context) => NewNormalDefinitionPage(),
       },
       title: 'Blended Learning Starter Kit',
       theme: ThemeData(primaryColor: Color(0xFF95D03A),
